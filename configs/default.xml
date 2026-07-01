@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<feature automatic="selected" name="ElevatorSim"/>
+	<feature name="Configure"/>
+	<feature automatic="selected" name="ElevatorBehaviour"/>
+	<feature automatic="selected" name="Operation"/>
+	<feature automatic="selected" name="Modes"/>
+	<feature automatic="unselected" name="Sabbath"/>
+	<feature manual="selected" name="FIFO"/>
+	<feature automatic="unselected" name="ShortestPath"/>
+	<feature name="Service"/>
+	<feature name="Priorities"/>
+	<feature name="RushHour"/>
+	<feature name="FloorPriority"/>
+	<feature name="PersonPriority"/>
+	<feature name="VoiceOutput"/>
+	<feature manual="selected" name="CallButtons"/>
+	<feature automatic="unselected" name="DirectedCall"/>
+	<feature automatic="selected" name="UndirectedCall"/>
+	<feature name="Security"/>
+	<feature name="FloorPermission"/>
+	<feature name="Safety"/>
+	<feature name="Overloaded"/>
+	<feature automatic="selected" name="ElevatorCount"/>
+	<feature manual="selected" name="Single"/>
+	<feature automatic="unselected" name="Multi"/>
+	<feature automatic="unselected" name="GroupControl"/>
+	<feature automatic="unselected" name="Nearest"/>
+	<feature automatic="unselected" name="LeastLoaded"/>
+	<feature automatic="unselected" name="Zoning"/>
+	<feature automatic="selected" name="Simulation"/>
+	<feature automatic="unselected" name="Manual"/>
+	<feature automatic="selected" manual="selected" name="Automatic"/>
+	<feature automatic="selected" name="ArrivalPattern"/>
+	<feature manual="selected" name="Uniform"/>
+	<feature automatic="unselected" name="Poisson"/>
+	<feature automatic="unselected" name="PeakTraffic"/>
+	<feature name="Boarding"/>
+	<feature name="Monitoring"/>
+	<feature name="Frontend"/>
+	<feature name="GUI"/>
+	<feature name="Console"/>
+	<feature name="Metrics"/>
+</configuration>

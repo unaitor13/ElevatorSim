@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="autolayoutconstraints" value="false"/>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showconstraints" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="ElevatorSim">
+			<feature name="Configure"/>
+			<and abstract="true" mandatory="true" name="ElevatorBehaviour">
+				<graphics key="collapsed" value="false"/>
+				<and abstract="true" mandatory="true" name="Operation">
+					<alt abstract="true" mandatory="true" name="Modes">
+						<feature name="Sabbath"/>
+						<feature name="FIFO"/>
+						<feature name="ShortestPath"/>
+					</alt>
+					<feature name="Service"/>
+					<or abstract="true" name="Priorities">
+						<feature name="RushHour"/>
+						<feature name="FloorPriority"/>
+						<feature name="PersonPriority"/>
+					</or>
+				</and>
+				<feature abstract="true" name="VoiceOutput"/>
+				<alt name="CallButtons">
+					<feature name="DirectedCall"/>
+					<feature name="UndirectedCall"/>
+				</alt>
+				<and abstract="true" name="Security">
+					<feature mandatory="true" name="FloorPermission"/>
+				</and>
+				<and abstract="true" name="Safety">
+					<feature mandatory="true" name="Overloaded"/>
+				</and>
+			</and>
+			<alt abstract="true" mandatory="true" name="ElevatorCount">
+				<feature name="Single"/>
+				<and name="Multi">
+					<alt abstract="true" name="GroupControl">
+						<feature name="Nearest"/>
+						<feature name="LeastLoaded"/>
+						<feature name="Zoning"/>
+					</alt>
+				</and>
+			</alt>
+			<alt abstract="true" mandatory="true" name="Simulation">
+				<feature name="Manual"/>
+				<and name="Automatic">
+					<alt abstract="true" mandatory="true" name="ArrivalPattern">
+						<feature name="Uniform"/>
+						<feature name="Poisson"/>
+						<feature name="PeakTraffic"/>
+					</alt>
+					<feature name="Boarding"/>
+				</and>
+			</alt>
+			<and abstract="true" name="Monitoring">
+				<alt abstract="true" mandatory="true" name="Frontend">
+					<feature name="GUI"/>
+					<feature name="Console"/>
+				</alt>
+				<feature name="Metrics"/>
+			</and>
+		</and>
+	</struct>
+	<constraints>
+		<rule>
+			<imp>
+				<var>DirectedCall</var>
+				<var>ShortestPath</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>UndirectedCall</var>
+				<disj>
+					<var>FIFO</var>
+					<var>ShortestPath</var>
+				</disj>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>FloorPriority</var>
+				<var>Configure</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>Manual</var>
+				<var>CallButtons</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>LeastLoaded</var>
+				<var>Boarding</var>
+			</imp>
+		</rule>
+	</constraints>
+</featureModel>

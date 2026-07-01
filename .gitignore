@@ -1,0 +1,23 @@
+# Eclipse / FeatureIDE
+.settings/
+bin/
+
+# Java build outputs
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE files
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
