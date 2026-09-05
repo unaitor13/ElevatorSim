@@ -12,8 +12,8 @@
 	</properties>
 	<struct>
 		<and abstract="true" mandatory="true" name="ElevatorSim">
-			<feature name="Configure"/>
-			<and abstract="true" mandatory="true" name="ElevatorBehaviour">
+			<feature mandatory="true" name="Configure"/>
+			<and abstract="true" mandatory="true" name="Elevator">
 				<graphics key="collapsed" value="false"/>
 				<and abstract="true" mandatory="true" name="Operation">
 					<alt abstract="true" mandatory="true" name="Modes">
@@ -28,29 +28,69 @@
 						<feature name="PersonPriority"/>
 					</or>
 				</and>
-				<feature abstract="true" name="VoiceOutput"/>
+				<and name="VoiceOutput">
+					<feature name="Multilingual"/>
+				</and>
 				<alt name="CallButtons">
 					<feature name="DirectedCall"/>
 					<feature name="UndirectedCall"/>
+					<feature name="Destination"/>
 				</alt>
 				<and abstract="true" name="Security">
 					<feature mandatory="true" name="FloorPermission"/>
 				</and>
 				<and abstract="true" name="Safety">
-					<feature mandatory="true" name="Overloaded"/>
+					<alt mandatory="true" name="Overloaded">
+						<feature name="SilentBlock"/>
+						<feature name="AudibleAlarm"/>
+						<feature name="VoiceAnnounce"/>
+					</alt>
+					<or abstract="true" mandatory="true" name="Emergencies">
+						<feature abstract="true" name="Firefighter"/>
+						<feature abstract="true" name="Seismic"/>
+						<feature abstract="true" name="PowerFailure"/>
+					</or>
+				</and>
+				<and abstract="true" mandatory="true" name="Accessibility">
+					<feature abstract="true" mandatory="true" name="Braille"/>
+					<feature abstract="true" name="ExtendedDoorTime"/>
+					<feature abstract="true" name="Handrail"/>
+				</and>
+				<or abstract="true" name="EnergyEfficiency">
+					<feature abstract="true" name="StandbyStopMode"/>
+					<feature abstract="true" name="LedCarLighting"/>
+				</or>
+				<and abstract="true" mandatory="true" name="Devices">
+					<or abstract="true" name="LandingFixtures">
+						<feature name="DestinationEntryDevice"/>
+						<feature name="HallPositionIndicator"/>
+					</or>
+					<or abstract="true" name="CarFixtures">
+						<feature abstract="true" name="CarCallButtons"/>
+						<feature abstract="true" name="CarPositionIndicator"/>
+						<feature name="CarDirectionIndicator"/>
+					</or>
+					<and abstract="true" mandatory="true" name="Sensors">
+						<feature mandatory="true" name="LoadWeighingDevice"/>
+						<feature abstract="true" mandatory="true" name="DoorSensor"/>
+					</and>
 				</and>
 			</and>
-			<alt abstract="true" mandatory="true" name="ElevatorCount">
-				<feature name="Single"/>
-				<and name="Multi">
-					<alt abstract="true" name="GroupControl">
-						<feature name="Nearest"/>
-						<feature name="LeastLoaded"/>
-						<feature name="Zoning"/>
-					</alt>
-				</and>
-			</alt>
+			<and abstract="true" name="GroupControl">
+				<graphics key="collapsed" value="false"/>
+				<alt abstract="true" mandatory="true" name="Strategy">
+					<feature name="Nearest"/>
+					<feature name="LoadBased"/>
+					<feature name="EstimatedTime"/>
+					<feature name="Zoning"/>
+				</alt>
+				<alt abstract="true" name="Parking">
+					<feature name="HomingReturn"/>
+					<feature name="IntelligentCarParking"/>
+				</alt>
+			</and>
 			<alt abstract="true" mandatory="true" name="Simulation">
+				<graphics key="collapsed" value="false"/>
 				<feature name="Manual"/>
 				<and name="Automatic">
 					<alt abstract="true" mandatory="true" name="ArrivalPattern">
@@ -62,11 +102,14 @@
 				</and>
 			</alt>
 			<and abstract="true" name="Monitoring">
+				<graphics key="collapsed" value="false"/>
 				<alt abstract="true" mandatory="true" name="Frontend">
 					<feature name="GUI"/>
 					<feature name="Console"/>
 				</alt>
 				<feature name="Metrics"/>
+				<feature name="EventLogging"/>
+				<feature name="LogReplay"/>
 			</and>
 		</and>
 	</struct>
@@ -88,20 +131,40 @@
 		</rule>
 		<rule>
 			<imp>
-				<var>FloorPriority</var>
-				<var>Configure</var>
-			</imp>
-		</rule>
-		<rule>
-			<imp>
 				<var>Manual</var>
 				<var>CallButtons</var>
 			</imp>
 		</rule>
 		<rule>
 			<imp>
-				<var>LeastLoaded</var>
+				<var>LoadBased</var>
 				<var>Boarding</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>LogReplay</var>
+				<var>EventLogging</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>VoiceAnnounce</var>
+				<var>VoiceOutput</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>Destination</var>
+				<var>DestinationEntryDevice</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>Destination</var>
+				<not>
+					<var>CarCallButtons</var>
+				</not>
 			</imp>
 		</rule>
 	</constraints>

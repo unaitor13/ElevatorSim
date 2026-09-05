@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <configuration>
 	<feature automatic="selected" name="ElevatorSim"/>
-	<feature name="Configure"/>
-	<feature automatic="selected" name="ElevatorBehaviour"/>
+	<feature automatic="selected" name="Configure"/>
+	<feature automatic="selected" name="Elevator"/>
 	<feature automatic="selected" name="Operation"/>
 	<feature automatic="selected" name="Modes"/>
 	<feature automatic="unselected" name="Sabbath"/>
@@ -14,20 +14,49 @@
 	<feature name="FloorPriority"/>
 	<feature name="PersonPriority"/>
 	<feature name="VoiceOutput"/>
+	<feature name="Multilingual"/>
 	<feature manual="selected" name="CallButtons"/>
 	<feature automatic="unselected" name="DirectedCall"/>
-	<feature automatic="selected" name="UndirectedCall"/>
+	<feature manual="selected" name="UndirectedCall"/>
+	<feature name="Destination"/>
 	<feature name="Security"/>
 	<feature name="FloorPermission"/>
 	<feature name="Safety"/>
 	<feature name="Overloaded"/>
-	<feature automatic="selected" name="ElevatorCount"/>
-	<feature manual="selected" name="Single"/>
-	<feature automatic="unselected" name="Multi"/>
-	<feature automatic="unselected" name="GroupControl"/>
-	<feature automatic="unselected" name="Nearest"/>
-	<feature automatic="unselected" name="LeastLoaded"/>
-	<feature automatic="unselected" name="Zoning"/>
+	<feature name="SilentBlock"/>
+	<feature name="AudibleAlarm"/>
+	<feature name="VoiceAnnounce"/>
+	<feature name="Emergencies"/>
+	<feature name="Firefighter"/>
+	<feature name="Seismic"/>
+	<feature name="PowerFailure"/>
+	<feature automatic="selected" name="Accessibility"/>
+	<feature automatic="selected" name="Braille"/>
+	<feature name="ExtendedDoorTime"/>
+	<feature name="Handrail"/>
+	<feature name="EnergyEfficiency"/>
+	<feature name="StandbyStopMode"/>
+	<feature name="LedCarLighting"/>
+	<feature automatic="selected" name="Devices"/>
+	<feature name="LandingFixtures"/>
+	<feature name="DestinationEntryDevice"/>
+	<feature name="HallPositionIndicator"/>
+	<feature name="CarFixtures"/>
+	<feature name="CarCallButtons"/>
+	<feature name="CarPositionIndicator"/>
+	<feature name="CarDirectionIndicator"/>
+	<feature automatic="selected" name="Sensors"/>
+	<feature automatic="selected" name="LoadWeighingDevice"/>
+	<feature automatic="selected" name="DoorSensor"/>
+	<feature name="GroupControl"/>
+	<feature name="Strategy"/>
+	<feature name="Nearest"/>
+	<feature name="LoadBased"/>
+	<feature name="EstimatedTime"/>
+	<feature name="Zoning"/>
+	<feature name="Parking"/>
+	<feature name="HomingReturn"/>
+	<feature name="IntelligentCarParking"/>
 	<feature automatic="selected" name="Simulation"/>
 	<feature automatic="unselected" name="Manual"/>
 	<feature automatic="selected" manual="selected" name="Automatic"/>
@@ -41,4 +70,6 @@
 	<feature name="GUI"/>
 	<feature name="Console"/>
 	<feature name="Metrics"/>
+	<feature name="EventLogging"/>
+	<feature name="LogReplay"/>
 </configuration>
