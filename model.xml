@@ -16,78 +16,61 @@
 			<and abstract="true" mandatory="true" name="Elevator">
 				<graphics key="collapsed" value="false"/>
 				<and abstract="true" mandatory="true" name="Operation">
-					<alt abstract="true" mandatory="true" name="Modes">
+					<or abstract="true" mandatory="true" name="Modes">
 						<feature name="Sabbath"/>
 						<feature name="FIFO"/>
 						<feature name="ShortestPath"/>
-					</alt>
+					</or>
 					<feature name="Service"/>
+					<feature name="Standby"/>
 					<or abstract="true" name="Priorities">
 						<feature name="RushHour"/>
 						<feature name="FloorPriority"/>
 						<feature name="PersonPriority"/>
 					</or>
 				</and>
-				<and name="VoiceOutput">
-					<feature name="Multilingual"/>
-				</and>
-				<alt name="CallButtons">
-					<feature name="DirectedCall"/>
-					<feature name="UndirectedCall"/>
-					<feature name="Destination"/>
-				</alt>
 				<and abstract="true" name="Security">
 					<feature mandatory="true" name="FloorPermission"/>
 				</and>
-				<and abstract="true" name="Safety">
-					<alt mandatory="true" name="Overloaded">
-						<feature name="SilentBlock"/>
-						<feature name="AudibleAlarm"/>
-						<feature name="VoiceAnnounce"/>
+				<and abstract="true" mandatory="true" name="Safety">
+					<feature mandatory="true" name="Overloaded"/>
+					<or abstract="true" name="Emergencies">
+						<feature name="Firefighter"/>
+						<feature name="Seismic"/>
+						<feature name="PowerFailure"/>
+					</or>
+				</and>
+				<and abstract="true" name="Accessibility">
+					<feature mandatory="true" name="ExtendedDoorTime"/>
+				</and>
+				<or abstract="true" name="Devices">
+					<alt name="CallButtons">
+						<feature name="DirectedCall"/>
+						<feature name="UndirectedCall"/>
+						<feature name="Destination"/>
 					</alt>
-					<or abstract="true" mandatory="true" name="Emergencies">
-						<feature abstract="true" name="Firefighter"/>
-						<feature abstract="true" name="Seismic"/>
-						<feature abstract="true" name="PowerFailure"/>
-					</or>
-				</and>
-				<and abstract="true" mandatory="true" name="Accessibility">
-					<feature abstract="true" mandatory="true" name="Braille"/>
-					<feature abstract="true" name="ExtendedDoorTime"/>
-					<feature abstract="true" name="Handrail"/>
-				</and>
-				<or abstract="true" name="EnergyEfficiency">
-					<feature abstract="true" name="StandbyStopMode"/>
-					<feature abstract="true" name="LedCarLighting"/>
-				</or>
-				<and abstract="true" mandatory="true" name="Devices">
-					<or abstract="true" name="LandingFixtures">
-						<feature name="DestinationEntryDevice"/>
-						<feature name="HallPositionIndicator"/>
-					</or>
-					<or abstract="true" name="CarFixtures">
-						<feature abstract="true" name="CarCallButtons"/>
-						<feature abstract="true" name="CarPositionIndicator"/>
-						<feature name="CarDirectionIndicator"/>
-					</or>
-					<and abstract="true" mandatory="true" name="Sensors">
-						<feature mandatory="true" name="LoadWeighingDevice"/>
-						<feature abstract="true" mandatory="true" name="DoorSensor"/>
+					<feature name="HallPositionIndicator"/>
+					<feature name="AudibleSignal"/>
+					<and name="VoiceOutput">
+						<or abstract="true" mandatory="true" name="Languages">
+							<feature name="Spanish"/>
+							<feature name="English"/>
+						</or>
 					</and>
-				</and>
+				</or>
 			</and>
 			<and abstract="true" name="GroupControl">
 				<graphics key="collapsed" value="false"/>
-				<alt abstract="true" mandatory="true" name="Strategy">
+				<or abstract="true" mandatory="true" name="Strategy">
 					<feature name="Nearest"/>
 					<feature name="LoadBased"/>
 					<feature name="EstimatedTime"/>
 					<feature name="Zoning"/>
-				</alt>
-				<alt abstract="true" name="Parking">
+				</or>
+				<or abstract="true" name="Parking">
 					<feature name="HomingReturn"/>
 					<feature name="IntelligentCarParking"/>
-				</alt>
+				</or>
 			</and>
 			<alt abstract="true" mandatory="true" name="Simulation">
 				<graphics key="collapsed" value="false"/>
@@ -98,7 +81,6 @@
 						<feature name="Poisson"/>
 						<feature name="PeakTraffic"/>
 					</alt>
-					<feature name="Boarding"/>
 				</and>
 			</alt>
 			<and abstract="true" name="Monitoring">
@@ -122,7 +104,7 @@
 		</rule>
 		<rule>
 			<imp>
-				<var>UndirectedCall</var>
+				<var>CallButtons</var>
 				<disj>
 					<var>FIFO</var>
 					<var>ShortestPath</var>
@@ -137,34 +119,14 @@
 		</rule>
 		<rule>
 			<imp>
-				<var>LoadBased</var>
-				<var>Boarding</var>
-			</imp>
-		</rule>
-		<rule>
-			<imp>
 				<var>LogReplay</var>
 				<var>EventLogging</var>
 			</imp>
 		</rule>
 		<rule>
 			<imp>
-				<var>VoiceAnnounce</var>
-				<var>VoiceOutput</var>
-			</imp>
-		</rule>
-		<rule>
-			<imp>
-				<var>Destination</var>
-				<var>DestinationEntryDevice</var>
-			</imp>
-		</rule>
-		<rule>
-			<imp>
-				<var>Destination</var>
-				<not>
-					<var>CarCallButtons</var>
-				</not>
+				<var>LoadBased</var>
+				<var>Automatic</var>
 			</imp>
 		</rule>
 	</constraints>

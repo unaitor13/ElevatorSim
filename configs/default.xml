@@ -5,49 +5,36 @@
 	<feature automatic="selected" name="Elevator"/>
 	<feature automatic="selected" name="Operation"/>
 	<feature automatic="selected" name="Modes"/>
-	<feature automatic="unselected" name="Sabbath"/>
+	<feature name="Sabbath"/>
 	<feature manual="selected" name="FIFO"/>
-	<feature automatic="unselected" name="ShortestPath"/>
+	<feature name="ShortestPath"/>
 	<feature name="Service"/>
+	<feature name="Standby"/>
 	<feature name="Priorities"/>
 	<feature name="RushHour"/>
 	<feature name="FloorPriority"/>
 	<feature name="PersonPriority"/>
-	<feature name="VoiceOutput"/>
-	<feature name="Multilingual"/>
-	<feature manual="selected" name="CallButtons"/>
-	<feature automatic="unselected" name="DirectedCall"/>
-	<feature manual="selected" name="UndirectedCall"/>
-	<feature name="Destination"/>
 	<feature name="Security"/>
 	<feature name="FloorPermission"/>
-	<feature name="Safety"/>
-	<feature name="Overloaded"/>
-	<feature name="SilentBlock"/>
-	<feature name="AudibleAlarm"/>
-	<feature name="VoiceAnnounce"/>
+	<feature automatic="selected" name="Safety"/>
+	<feature automatic="selected" name="Overloaded"/>
 	<feature name="Emergencies"/>
 	<feature name="Firefighter"/>
 	<feature name="Seismic"/>
 	<feature name="PowerFailure"/>
-	<feature automatic="selected" name="Accessibility"/>
-	<feature automatic="selected" name="Braille"/>
+	<feature name="Accessibility"/>
 	<feature name="ExtendedDoorTime"/>
-	<feature name="Handrail"/>
-	<feature name="EnergyEfficiency"/>
-	<feature name="StandbyStopMode"/>
-	<feature name="LedCarLighting"/>
 	<feature automatic="selected" name="Devices"/>
-	<feature name="LandingFixtures"/>
-	<feature name="DestinationEntryDevice"/>
+	<feature manual="selected" name="CallButtons"/>
+	<feature automatic="unselected" name="DirectedCall"/>
+	<feature manual="selected" name="UndirectedCall"/>
+	<feature automatic="unselected" name="Destination"/>
 	<feature name="HallPositionIndicator"/>
-	<feature name="CarFixtures"/>
-	<feature name="CarCallButtons"/>
-	<feature name="CarPositionIndicator"/>
-	<feature name="CarDirectionIndicator"/>
-	<feature automatic="selected" name="Sensors"/>
-	<feature automatic="selected" name="LoadWeighingDevice"/>
-	<feature automatic="selected" name="DoorSensor"/>
+	<feature name="AudibleSignal"/>
+	<feature name="VoiceOutput"/>
+	<feature name="Languages"/>
+	<feature name="Spanish"/>
+	<feature name="English"/>
 	<feature name="GroupControl"/>
 	<feature name="Strategy"/>
 	<feature name="Nearest"/>
@@ -64,7 +51,6 @@
 	<feature manual="selected" name="Uniform"/>
 	<feature automatic="unselected" name="Poisson"/>
 	<feature automatic="unselected" name="PeakTraffic"/>
-	<feature name="Boarding"/>
 	<feature name="Monitoring"/>
 	<feature name="Frontend"/>
 	<feature name="GUI"/>
