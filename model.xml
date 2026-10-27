@@ -129,5 +129,17 @@
 				<var>Automatic</var>
 			</imp>
 		</rule>
+		<rule>
+			<disj>
+				<var>CallButtons</var>
+				<var>Sabbath</var>
+			</disj>
+		</rule>
+		<rule>
+			<imp>
+				<var>GroupControl</var>
+				<var>CallButtons</var>
+			</imp>
+		</rule>
 	</constraints>
 </featureModel>
