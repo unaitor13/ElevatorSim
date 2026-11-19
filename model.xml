@@ -11,7 +11,7 @@
 		<graphics key="layoutalgorithm" value="1"/>
 	</properties>
 	<struct>
-		<and abstract="true" mandatory="true" name="ElevatorSim">
+		<and mandatory="true" name="ElevatorSim">
 			<feature mandatory="true" name="Configure"/>
 			<and abstract="true" mandatory="true" name="Elevator">
 				<graphics key="collapsed" value="false"/>
@@ -59,7 +59,7 @@
 					</and>
 				</or>
 			</and>
-			<and abstract="true" name="GroupControl">
+			<and name="GroupControl">
 				<graphics key="collapsed" value="false"/>
 				<or abstract="true" mandatory="true" name="Strategy">
 					<feature name="Nearest"/>
